@@ -60,7 +60,7 @@ agent-browser install        # Download Chromium
 #### Option 1: In Pi
 - **Install as a Pi package**:
   ```bash
-  pi install git:github.com/jihe520/social-push
+  pi install git:github.com/Ted88368/social-push
   ```
 - **Or link/copy to global Pi skills**:
   ```bash
@@ -72,7 +72,7 @@ agent-browser install        # Download Chromium
 #### Option 2: In Claude Code
 Recommended installation via npx:
 ```bash
-npx skills add jihe520/social-push
+npx skills add Ted88368/social-push
 npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ```
 
