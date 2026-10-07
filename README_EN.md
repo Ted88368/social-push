@@ -7,18 +7,18 @@ A social media publishing skill for AI programming assistants, based on [agent-b
 
 ## 💡 Why?
 
-**claude code + bash + --help + skills**
+**AI Coding Assistant (Claude Code / Pi) + bash + --help + skills**
 
 Traditional scripts struggle with complex page changes, playwright MCP consumes massive tokens and is slow  
 agent-browser parses interaction refs to reduce token consumption  
 Using `--help` with agent-browser in bash provides excellent hints and runs faster  
 Self-evolution makes maintenance easy, automatically fixing workflows when pages change  
-Communicates with Claude Code to understand user needs and dynamically generate publishing content
+Communicates with the AI assistant to understand user needs and dynamically generate publishing content
 
 
 ## ✨ Features
 
-- 🚀 **One-Line Publishing** - Type `/social-push post this article to Xiaohongshu` in Claude Code, AI handles everything
+- 🚀 **One-Line Publishing** - Type a prompt or command in Claude Code or Pi (e.g. `/skill:social-push post this to Xiaohongshu`), AI handles everything
 - 🧠 **AI-Driven Smart Interaction** - No hardcoded selectors, AI understands page elements, strong resistance to page changes
 - 🔄 **Self-Evolution** - Automatically detects and fixes workflows after page redesigns, no manual code maintenance
 - 📝 **Markdown as Configuration** - Add new platforms by creating a markdown file, no complex scripts needed
@@ -47,26 +47,52 @@ Tips: Simply copy the content below to Claude Code for installation
 
 ### Prerequisites
 
-1. Install Claude Code
+1. Install AI Coding Assistant: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) or [Pi](https://github.com/badlogic/pi)
 2. Install agent-browser and Chromium browser
 ```bash
 npm install -g agent-browser # agent-browser CLI tool
-npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser # Install agent-browser skill
-agent-browser install  # Download Chromium
+agent-browser install        # Download Chromium
 ```
+3. Enable remote debugging in Chrome at `chrome://inspect/#remote-debugging` by checking `Allow remote debugging for this browser instance`.
 
 ### Install Skill
 
+#### Option 1: In Pi
+- **Install as a Pi package**:
+  ```bash
+  pi install git:github.com/jihe520/social-push
+  ```
+- **Or link/copy to global Pi skills**:
+  ```bash
+  ln -s $(pwd)/skills/social-push ~/.pi/agent/skills/social-push
+  ln -s $(pwd)/skills/agent-browser ~/.pi/agent/skills/agent-browser
+  ```
+- **Or run `pi` directly in this repository root** (Pi automatically discovers `skills/`).
+
+#### Option 2: In Claude Code
 Recommended installation via npx:
 ```bash
 npx skills add jihe520/social-push
+npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ```
 
-Or manually copy the `.claude/skills/social-push` directory to your project.
+Or manually copy the `skills/` directories to `.claude/skills/`.
 
 ## 🚀 Usage
 
-Simply use the `/social-push` command manually in Claude Code
+### In Pi
+- Explicit command:
+  ```text
+  /skill:social-push post this article to Xiaohongshu
+  ```
+- Natural language prompt: Ask Pi directly, e.g.:
+  > "Publish my README.md to Juejin drafts"
+
+### In Claude Code
+- Use the `/social-push` command:
+  ```text
+  /social-push post this article to Xiaohongshu
+  ```
 
 ## ⚙️ Customization
 

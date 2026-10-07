@@ -22,18 +22,18 @@
 
 ## 💡 Why?
 
-**claude code + bash + --help + skills**
+**AI 编程助手（Claude Code / Pi） + bash + --help + skills**
 
 传统脚本难以应对页面复杂变化，playwright mcp 消耗大量 tokens 且慢  
 agent-browser 解析交互 ref 减少 tokens 消耗  
 在 bash 中的 agent-browser 使用 `--help` 很好得到提示，运行更快  
 self-evolution 方便维护，页面变化后可自行修复  
-与 claude code 沟通用户需求，动态生成发布内容
+与 AI 助手沟通用户需求，动态生成发布内容
 
 
 ## ✨ Features
 
-- 🚀 **一句话发布内容** - 在 Claude Code 中输入 `/social-push 把这篇文章发到小红书`，AI 自动完成所有操作
+- 🚀 **一句话发布内容** - 在 Claude Code / Pi 中输入提示词或命令（例如 `/skill:social-push 把这篇文章发到小红书`），AI 自动完成所有操作
 - 🧠 **AI 驱动的智能交互** - 无需硬编码选择器，AI 自动理解页面元素，抗改版能力强
 - 🔄 **Self-Evolution（自我进化）** - 网页改版后可自动检测并修复 workflow，无需手动维护代码
 - 📝 **Markdown 即配置** - 添加新平台只需创建一个 markdown 文件，无需编写复杂脚本
@@ -63,31 +63,53 @@ more and more...
 
 ## 📦 安装
 
-tips: 直接将下面内容复制给 claude code 执行即可安装
-
 ### 前置依赖
 
-1. 安装 Claude Code
+1. 安装 AI 编程助手：[Claude Code](https://docs.anthropic.com/en/docs/claude-code) 或 [Pi](https://github.com/badlogic/pi)
 2. 安装 agent-browser 和 Chromium 浏览器
 ```bash
 npm install -g agent-browser # agent-browser CLI tool
-npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser # 安装 agent-browser skill
-agent-browser install  # Download Chromium
+agent-browser install        # Download Chromium
 ```
-3. 允许远程调试功能，在 chrome的地址栏输入 `chrome://inspect/#remote-debugging`，打开 `Allow remote debugging for this browser instance`
+3. 允许远程调试功能：在 Chrome 的地址栏输入 `chrome://inspect/#remote-debugging`，打开 `Allow remote debugging for this browser instance`
 
 ### 安装 Skill
 
+#### 方式一：在 Pi 中使用
+- **直接使用 Pi 包管理器安装**：
+  ```bash
+  pi install git:github.com/jihe520/social-push
+  ```
+- **或者复制 / 软链接到全局 skills 目录**：
+  ```bash
+  ln -s $(pwd)/skills/social-push ~/.pi/agent/skills/social-push
+  ln -s $(pwd)/skills/agent-browser ~/.pi/agent/skills/agent-browser
+  ```
+- **或者在当前项目根目录直接启动 `pi`**（Pi 会自动识别项目下的 `skills/`）。
+
+#### 方式二：在 Claude Code 中使用
 推荐使用 npx 安装：
 ```bash
 npx skills add jihe520/social-push
+npx skills add https://github.com/vercel-labs/agent-browser --skill agent-browser
 ```
-
-或手动复制 `.claude/skills/social-push` 目录到你的项目中。
+或手动复制 `skills/` 下的目录到 `.claude/skills/` 中。
 
 ## 🚀 使用方法
 
-在 Claude Code 中 **手动** /social-push 命令 即可
+### 在 Pi 中使用
+- 显式调用：
+  ```text
+  /skill:social-push 把这篇文章发到小红书
+  ```
+- 自然语言调用：直接向 Pi 发送消息，例如：
+  > “帮我把当前的 README.md 发布到掘金草稿箱”
+
+### 在 Claude Code 中使用
+- 手动输入 `/social-push` 命令或附带参数即可：
+  ```text
+  /social-push 把这篇文章发到小红书
+  ```
 
 ## ⚙️ 自定义
 

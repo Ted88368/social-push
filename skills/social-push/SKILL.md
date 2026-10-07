@@ -17,7 +17,7 @@ allowed-tools: Bash(agent-browser:*), Bash(jq:*), Bash(osascript:*) ,Read
 4. 每步操作后用 `agent-browser snapshot -i` 确认元素 ref，因为页面状态变化可能导致 ref 编号变化
 
 # Core Workflow
-1. 确认发布信息 调用 AskUserQuestion tool：目标平台（还是**添加新平台**）、内容类型、内容来源（文件路径/直接输入/ai 创作）、标题、话题标签
+1. 确认发布信息（若用户输入中未提供完整，向用户确认）：目标平台（还是**添加新平台**）、内容类型、内容来源（文件路径/直接输入/ai 创作）、标题、话题标签
 2. 简单了解 `agent-browser --help` 可用命令
 3. 读取 references 中对应平台和内容类型的 workflow
 4. 严格按照 workflow 中的步骤逐步执行
